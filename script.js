@@ -1,4 +1,4 @@
-
+//git master change
 //Select row
 $("tbody tr").click(function () {
     $('.selected').removeClass('selected');
