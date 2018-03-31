@@ -61,14 +61,26 @@ function sendWeight(name, weight){
 }
 
 
-
-function changeWeight(weight){
-  var currentWeight = $('.selected .kilos').html();
-  var newWeight = parseFloat(currentWeight+weight);
-  $('.selected .kilos').html(newWeight + " kg");
+function changeWeight(weight, currentWeight){
+  currentWeight = parseFloat(currentWeight);
+  var newWeight = currentWeight+weight;
+  $('.selected td:nth-of-type(3)').html(newWeight + "kg");  
 }
 
-$('#addOne').click(changeWeight(1));
-$('#addHalf').click(changeWeight(0.5));
-$('#subOne').click(changeWeight(-1));
-$('#subHalf').click(changeWeight(-0.5));
+
+$('#addOne').click(function(){
+  var currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(1, currentWeight);
+});
+$('#addHalf').click(function(){
+  var currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(0.5, currentWeight);
+});
+$('#subOne').click(function(){
+  var currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(-1, currentWeight);
+});
+$('#subHalf').click(function(){
+  var currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(-0.5, currentWeight);
+});
