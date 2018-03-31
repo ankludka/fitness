@@ -1,4 +1,3 @@
-//git master change
 //Select row
 $("tbody tr").click(function () {
     $('.selected').removeClass('selected');
@@ -42,11 +41,10 @@ $('#dayChange').click(function() {
       break;
       default : alert("qqqq");
   }
-
-
-
+  
 });
 
+/*
 function sendWeight(name, weight){
 // TODO  exerciseArray = {'exercisename'}name, ['weight'][weight]};
 // TODO  exerciseArray =  JSON.stringify(exerciseArray);
@@ -59,14 +57,13 @@ function sendWeight(name, weight){
     }
 });
 }
-
+*/
 
 function changeWeight(weight, currentWeight){
   currentWeight = parseFloat(currentWeight);
   var newWeight = currentWeight+weight;
   $('.selected td:nth-of-type(3)').html(newWeight + "kg");  
 }
-
 
 $('#addOne').click(function(){
   var currentWeight = $('.selected td:nth-of-type(3)').html();
