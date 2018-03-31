@@ -72,34 +72,3 @@ $('#addOne').click(changeWeight(1));
 $('#addHalf').click(changeWeight(0.5));
 $('#subOne').click(changeWeight(-1));
 $('#subHalf').click(changeWeight(-0.5));
-
-/*
-//refactor this - jedna funkcja przyjmująca wagę jako argument. Dodać jako event listener do poszczególnych id.
-//functions to change weights
-$('#addOne').click(function(){
-    var kilos = $('.selected .kilos').html();
-    weight = parseFloat(kilos)+1;
-    $('.selected .kilos').html(weight+" kg");
-//    var name = ($('.selected th').html());
-//    sendWeight(name, weight);
-});
-
-$('#addHalf').click(function(){
-    var kilos = $('.selected .kilos').html();
-    weight = parseFloat(kilos)+0.5;
-    $('.selected .kilos').html(weight+" kg");
-});
-
-$('#subOne').click(function(){
-    var kilos = $('.selected .kilos').html();
-    weight = parseFloat(kilos)-1;
-    $('.selected .kilos').html(weight+" kg");
-});
-
-$('#subHalf').click(function(){
-    var kilos = $('.selected .kilos').html();
-    weight = parseFloat(kilos)-0.5;
-    $('.selected .kilos').html(weight+" kg");
-});
-
-*/
