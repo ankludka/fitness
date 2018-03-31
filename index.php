@@ -5,8 +5,6 @@
 <html lang="en">
   <head>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
 
     <title>Fitness</title>
     <!-- Required meta tags -->
@@ -40,21 +38,21 @@
             <th scope="row">Squats</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
           <tr>
             <th scope="row">Bench Press</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
           <tr>
             <th scope="row">Lat Pulldown</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
         </tbody>
@@ -75,21 +73,21 @@
             <th scope="row">Overhead Press</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
           <tr>
             <th scope="row">Deadlift</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
           <tr>
             <th scope="row">Dumbbell Row</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
         </tbody>
@@ -110,21 +108,21 @@
             <th scope="row">Bench Press</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
           <tr>
             <th scope="row">Squats</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
           <tr>
             <th scope="row">Lat Pulldown</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
         </tbody>
@@ -145,21 +143,21 @@
             <th scope="row">Deadlift</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
           <tr>
             <th scope="row">Overhead Press</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
           <tr>
             <th scope="row">Dumbbell Row</th>
             <td>5</td>
             <td>5</td>
-            <td>kg</td>
+            <td>0kg</td>
             <td>0</td>
           </tr>
         </tbody>

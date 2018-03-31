@@ -61,30 +61,26 @@ function sendWeight(name, weight){
 }
 
 
-//refactor this - jedna funkcja przyjmująca wagę jako argument. Dodać jako event listener do poszczególnych id.
-//functions to change weights
+function changeWeight(weight, currentWeight){
+  currentWeight = parseFloat(currentWeight);
+  var newWeight = currentWeight+weight;
+  $('.selected td:nth-of-type(3)').html(newWeight + "kg");  
+}
+
+
 $('#addOne').click(function(){
-    var kilos = $('.selected .kilos').html();
-    weight = parseFloat(kilos)+1;
-    $('.selected .kilos').html(weight+" kg");
-//    var name = ($('.selected th').html());
-//    sendWeight(name, weight);
+  var currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(1, currentWeight);
 });
-
 $('#addHalf').click(function(){
-    var kilos = $('.selected .kilos').html();
-    weight = parseFloat(kilos)+0.5;
-    $('.selected .kilos').html(weight+" kg");
+  var currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(0.5, currentWeight);
 });
-
 $('#subOne').click(function(){
-    var kilos = $('.selected .kilos').html();
-    weight = parseFloat(kilos)-1;
-    $('.selected .kilos').html(weight+" kg");
+  var currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(-1, currentWeight);
 });
-
 $('#subHalf').click(function(){
-    var kilos = $('.selected .kilos').html();
-    weight = parseFloat(kilos)-0.5;
-    $('.selected .kilos').html(weight+" kg");
+  var currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(-0.5, currentWeight);
 });
