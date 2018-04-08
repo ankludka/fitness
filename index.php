@@ -1,4 +1,4 @@
-<?php include 'codes.php'; ?>
+<!--<?php include 'codes.php'; ?> -->
 
 
 <!doctype html>
@@ -30,30 +30,86 @@
             <th scope="col">Sets</th>
             <th scope="col">Reps</th>
             <th scope="col">Weight</th>
-            <th scope="col">Sets done</th>
+            <th scope="col">Success</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr data-tier="1">
             <th scope="row">Squats</th>
             <td>5</td>
-            <td>5</td>
+            <td>3</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
-          <tr>
+          <tr data-tier="1">
             <th scope="row">Bench Press</th>
-            <td>5</td>
-            <td>5</td>
+            <td>3</td>
+            <td>10</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
+          </tr>
+          <tr data-tier="1">
+            <th scope="row">Chin ups</th>
+            <td>3</td>
+            <td>10</td>
+            <td>0kg</td>
+            <td></td>
+          </tr>
+          <tr data-tier="2">
+            <th scope="row">Lat Pulldown</th>
+            <td>3</td>
+            <td>15</td>
+            <td>0kg</td>
+            <td></td>
           </tr>
           <tr>
-            <th scope="row">Lat Pulldown</th>
-            <td>5</td>
-            <td>5</td>
+            <th scope="row">Tricep extensions</th>
+            <td>3</td>
+            <td>15</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">Leg raises</th>
+            <td>3</td>
+            <td>15</td>
+            <td>0kg</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">Hyperextensions</th>
+            <td>3</td>
+            <td>15</td>
+            <td>0kg</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">Pinch hold</th>
+            <td>3</td>
+            <td>15</td>
+            <td>0kg</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">Wrist curl</th>
+            <td>3</td>
+            <td>15</td>
+            <td>0kg</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">Reverse wrist curl</th>
+            <td>3</td>
+            <td>15</td>
+            <td>0kg</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">Finger curl</th>
+            <td>3</td>
+            <td>15</td>
+            <td>0kg</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -74,21 +130,21 @@
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">Deadlift</th>
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">Dumbbell Row</th>
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -109,21 +165,21 @@
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">Squats</th>
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">Lat Pulldown</th>
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -144,31 +200,32 @@
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">Overhead Press</th>
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
           <tr>
             <th scope="row">Dumbbell Row</th>
             <td>5</td>
             <td>5</td>
             <td>0kg</td>
-            <td>0</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
 
       <div id="buttons">
-          <button class="btn btn-primary" id="subHalf" type="submit">-0,5kg</button>
-          <button class="btn btn-primary" id="subOne" type="submit">-1kg</button>
 
-          <button class="btn btn-primary" id="addHalf" type="submit">+0,5kg</button>
-          <button class="btn btn-primary" id="addOne" type="submit">+1kg</button>
+          <button class="btn btn-primary" id="removeWeight" type="submit">Remove weight</button>
+          <button class="btn btn-primary" id="addWeight" type="submit">Add weight</button>
+          <button class="btn btn-primary" id="success" type="submit">Success!</button>
+          <br /><br />
+          <button class="btn btn-primary" id="endDay" type="submit">End Day</button>
       </div>
     </div>
 

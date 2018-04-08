@@ -6,7 +6,7 @@ $("tbody tr").click(function () {
 
 //Change day
 //TODO last day zaciagany z BD
-var day = 1;
+let day = 1;
 
 $('#dayChange').click(function() {
 
@@ -61,23 +61,54 @@ function sendWeight(name, weight){
 
 function changeWeight(weight, currentWeight){
   currentWeight = parseFloat(currentWeight);
-  var newWeight = currentWeight+weight;
-  $('.selected td:nth-of-type(3)').html(newWeight + "kg");  
+  let newWeight = currentWeight+weight;
+  $('.selected td:nth-of-type(3)').html(newWeight + "kg"); 
 }
 
-$('#addOne').click(function(){
-  var currentWeight = $('.selected td:nth-of-type(3)').html();
-  changeWeight(1, currentWeight);
+
+function getWeight()
+{
+  let tier = $('tr.selected').data("tier");
+  if (tier == 1) return 5;
+  else return 2.5;
+}
+
+$('#addWeight').click(function(){
+
+  let weight = getWeight();
+  let currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(weight, currentWeight);
 });
-$('#addHalf').click(function(){
-  var currentWeight = $('.selected td:nth-of-type(3)').html();
-  changeWeight(0.5, currentWeight);
+$('#removeWeight').click(function(){
+
+  let weight = 0 - getWeight();
+  let currentWeight = $('.selected td:nth-of-type(3)').html();
+  changeWeight(weight, currentWeight);
 });
-$('#subOne').click(function(){
-  var currentWeight = $('.selected td:nth-of-type(3)').html();
-  changeWeight(-1, currentWeight);
+
+$('#success').click(function(){
+  let success = $('.selected td:nth-of-type(4)');
+  if(success.html() == "YES")
+    success.html("NO");
+  else
+    success.html("YES");
 });
-$('#subHalf').click(function(){
-  var currentWeight = $('.selected td:nth-of-type(3)').html();
-  changeWeight(-0.5, currentWeight);
+/*
+$('#endDay').click(function(){
+  let selected = $('td:nth-of-type(3)');
+  
+for (let key in selected) {
+  // skip loop if the property is from prototype
+  if (!selected.hasOwnProperty(key)) continue;
+
+  var obj = selected[key];
+  for (var prop in obj) {
+      // skip loop if the property is from prototype
+      if(!obj.hasOwnProperty(prop)) continue;
+
+      // your code
+      console.log(prop + " = " + obj[prop]);
+  }
+}
 });
+*/
