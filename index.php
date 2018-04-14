@@ -36,80 +36,87 @@
         <tbody>
           <tr data-tier="1">
             <th scope="row">Squats</th>
-            <td>5</td>
-            <td>3</td>
-            <td>0kg</td>
-            <td></td>
-          </tr>
-          <tr data-tier="1">
-            <th scope="row">Bench Press</th>
-            <td>3</td>
-            <td>10</td>
-            <td>0kg</td>
-            <td></td>
-          </tr>
-          <tr data-tier="1">
-            <th scope="row">Chin ups</th>
-            <td>3</td>
-            <td>10</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">5</td>
+            <td class="reps">3</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
           </tr>
           <tr data-tier="2">
+          <th scope="row">Bench Press</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="3">
             <th scope="row">Lat Pulldown</th>
-            <td>3</td>
-            <td>15</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
           </tr>
-          <tr>
+          <tr data-tier="4">
+            <th scope="row">Chin ups</th>
+            <td class="sets">3</td>
+            <td class="reps">MAX</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Curls</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
             <th scope="row">Tricep extensions</th>
-            <td>3</td>
-            <td>15</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
           </tr>
-          <tr>
+          <tr data-tier="4">
             <th scope="row">Leg raises</th>
-            <td>3</td>
-            <td>15</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
           </tr>
-          <tr>
+          <tr data-tier="4">
             <th scope="row">Hyperextensions</th>
-            <td>3</td>
-            <td>15</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
           </tr>
-          <tr>
+          <tr data-tier="4">
             <th scope="row">Pinch hold</th>
-            <td>3</td>
-            <td>15</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
-          <tr>
+          <tr data-tier="4">
             <th scope="row">Wrist curl</th>
-            <td>3</td>
-            <td>15</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
-          <tr>
+          <tr data-tier="4">
             <th scope="row">Reverse wrist curl</th>
-            <td>3</td>
-            <td>15</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
-          <tr>
+          <tr data-tier="4">
             <th scope="row">Finger curl</th>
-            <td>3</td>
-            <td>15</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
         </tbody>
       </table>
@@ -121,30 +128,86 @@
             <th scope="col">Sets</th>
             <th scope="col">Reps</th>
             <th scope="col">Weight</th>
-            <th scope="col">Sets done</th>
+            <th scope="col">Success</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Overhead Press</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+          <tr data-tier="1">
+            <th scope="row">OHP</th>
+            <td class="sets">5</td>
+            <td class="reps">3</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
           </tr>
-          <tr>
-            <th scope="row">Deadlift</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+          <tr data-tier="2">
+          <th scope="row">Deadlift</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
-          <tr>
-            <th scope="row">Dumbbell Row</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+          <tr data-tier="3">
+            <th scope="row">Dumbbell row</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Chin ups</th>
+            <td class="sets">3</td>
+            <td class="reps">MAX</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Curls</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Close grip bench press</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Cable crunch</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Pinch hold</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Wrist curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Reverse wrist curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Finger curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
         </tbody>
       </table>
@@ -156,30 +219,93 @@
             <th scope="col">Sets</th>
             <th scope="col">Reps</th>
             <th scope="col">Weight</th>
-            <th scope="col">Sets done</th>
+            <th scope="col">Success</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+        <tr data-tier="1">
             <th scope="row">Bench Press</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">5</td>
+            <td class="reps">3</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
           </tr>
-          <tr>
-            <th scope="row">Squats</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+          <tr data-tier="2">
+          <th scope="row">Squats</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
-          <tr>
+          <tr data-tier="3">
             <th scope="row">Lat Pulldown</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Chin ups</th>
+            <td class="sets">3</td>
+            <td class="reps">MAX</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Curls</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Tricep extensions</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Leg raises</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Hyperextensions</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Pinch hold</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Wrist curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Reverse wrist curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Finger curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
         </tbody>
       </table>
@@ -191,30 +317,86 @@
             <th scope="col">Sets</th>
             <th scope="col">Reps</th>
             <th scope="col">Weight</th>
-            <th scope="col">Sets done</th>
+            <th scope="col">Success</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+        <tr data-tier="1">
             <th scope="row">Deadlift</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+            <td class="sets">5</td>
+            <td class="reps">3</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
           </tr>
-          <tr>
-            <th scope="row">Overhead Press</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+          <tr data-tier="2">
+          <th scope="row">OHP</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
-          <tr>
-            <th scope="row">Dumbbell Row</th>
-            <td>5</td>
-            <td>5</td>
-            <td>0kg</td>
-            <td></td>
+          <tr data-tier="3">
+            <th scope="row">Dumbbell row</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Chin ups</th>
+            <td class="sets">3</td>
+            <td class="reps">MAX</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Curls</th>
+            <td class="sets">3</td>
+            <td class="reps">10</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Close grip bench press</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Cable crunch</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success">AMRAP</td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Pinch hold</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Wrist curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Reverse wrist curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
+          </tr>
+          <tr data-tier="4">
+            <th scope="row">Finger curl</th>
+            <td class="sets">3</td>
+            <td class="reps">15</td>
+            <td class="weight">0kg</td>
+            <td class="success"></td>
           </tr>
         </tbody>
       </table>

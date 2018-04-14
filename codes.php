@@ -1,6 +1,6 @@
 <?php
 
-  $link = mysqli_connect("localhost", "ariies_icecream", "icecream", "ariies_icecream");
+  $link = mysqli_connect("localhost", "ariies_fitness", "fitness", "ariies_fitness");
 
   if (!$link) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
