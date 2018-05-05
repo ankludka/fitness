@@ -8,6 +8,9 @@
             $error .= "This e-mail address is already registered."
         }
         */
+        
+        echo(htmlentities("Soon™ to be implemented"));
+
     }
 
 
