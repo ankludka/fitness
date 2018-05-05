@@ -1,0 +1,55 @@
+
+html { 
+
+  background: url(bg.jpg) no-repeat center center fixed,  
+              linear-gradient(to bottom, #FAE6C6, #18181A, #2D2D2D, #3B3830, #9898AC, #9898AC, #9898AC, #9898AC, #5A6480, #808297, #9A9DB0, #1B222C), 
+             #696157;
+  /* Photo by Tegan Mierle on Unsplash */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.inputField, #submitButton, #error{
+
+    width: 500px;
+    margin: 1em auto;
+    padding: 1em;
+    font-size: 18px;
+    border-radius: 7px;
+}
+
+#submitButton{
+    
+    color: black;
+    width: 300px;
+}
+
+#submitButton:hover{
+    cursor: pointer;
+}
+
+#checkbox{
+    margin: auto;
+    color: white;
+}
+
+#error{
+    padding: 0.5em;
+    min-height: 2em;
+    margin-top: 350px;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.5);
+    text-align: center;
+}
+
+.hidden{
+    visibility: hidden;
+}
