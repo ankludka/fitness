@@ -17,7 +17,7 @@ form{
     margin-top: 20px;
 }
 
-.inputField, #submitButton, #error{
+.inputField, .submitButton, #error{
 
     width: 500px;
     margin: 1em auto;
@@ -26,13 +26,14 @@ form{
     border-radius: 7px;
 }
 
-#submitButton{
+.submitButton{
     
+    margin: 1em auto 0 auto;
     color: black;
     width: 300px;
 }
 
-#submitButton:hover{
+.submitButton:hover{
     cursor: pointer;
 }
 
@@ -44,7 +45,7 @@ form{
 #error{
     padding: 0.5em;
     min-height: 2em;
-    margin-top: 350px;
+    margin-top: 10%;
     color: white;
     background-color: rgba(255, 0, 0, 0.5);
     text-align: center;
