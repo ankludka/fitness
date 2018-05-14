@@ -9,74 +9,72 @@ if (!$link) {
   exit;
 }
 
-    if( array_key_exists("register", $_POST))
+if( array_key_exists("register", $_POST))
+{
+    $email = mysqli_real_escape_string($link, $_POST['email']);
+    $password = mysqli_real_escape_string($link, $_POST['password']);
+
+//Check if email is already taken
+    $query = "SELECT id FROM users WHERE email ='".$email."';";
+    $result = mysqli_query($link, $query);
+
+    if(mysqli_num_rows($result) > 0)
     {
-
-        //Check if email is already taken
-        $query = "SELECT id FROM users WHERE email ='".mysqli_real_espace_string($link, $_POST'[email'])."'";
-        $result = mysqli_query($link, $query);
-
-        if(mysqli_num_rows($result) > 0)
-        {
-            $error .= "This e-mail address is already registered."
-        }
-        //register user
-        else
-        {
-            $email = mysqli_real_espace_string($link, $_POST['email']);
-            $password = mysqli_real_espace_string($link, $_POST['password']);
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-            $query = "INSERT INTO users (email, password) VALUES ('".$email."', '".$hashedPassword."')";
-
-            echo("You have been registered!");
-        }
-        
-
-
+//TODO Redirect to front page and display error there
+        echo "This e-mail address is already registered.";
     }
-
-    if( array_key_exists("login", $_POST))
+//register user
+    else
     {
-        echo("<br>");
-        echo(php_version());
-        echo("<br>");
-        
+//TODO maybe some e-mail confirmation?
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $email = mysqli_real_espace_string($link, $_POST['email']);
-        $password = mysqli_real_espace_string($link, $_POST['password']);
+        $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".$email."', '".$hashedPassword."');";
 
-        $query = "SELECT password FROM users WHERE email='".$email."'";
-        $result = mysqli_query($link, $query);
-
-
-
-        if(mysqli_num_rows($result) > 0)
+        if(!mysqli_query($link, $query))
         {
-            $row = mysqli_fetch_assoc($result);
-            $hash = $row['password'];
+//TODO Redirect to front page and display error there
+            echo "<br>Registration failed - please try again later.<br>";
+        }
+//TODO Redirect to front page and display message there
+        echo("<br>You have been registered!");
+    }
+}
 
-            if (password_verify($password, $hash))
-            {
-                echo 'Password is valid!';
-            }
-            else
-            {
-                echo 'Invalid password.';
-            }
+//login user
+if( array_key_exists("login", $_POST))
+{
+    $email = mysqli_real_escape_string($link, $_POST['email']);
+    $password = mysqli_real_escape_string($link, $_POST['password']);
 
-            //$error .= "Wrong e-mail or password. Try again."
+    $query = "SELECT password FROM users WHERE email='".$email."'";
+    $result = mysqli_query($link, $query);
+
+
+
+    if(mysqli_num_rows($result) > 0)
+    {
+        $row = mysqli_fetch_assoc($result);
+        $hash = $row['password'];
+
+        if (password_verify($password, $hash))
+        {
+//TODO redirect to training page, load users data, cookie stuff
+            echo 'Password is valid!';
         }
         else
-        {
-            echo("Wrong email or password!");
+        {   
+//TODO Redirect to front page and display error there
+            echo 'Invalid password.';
         }
-        
-       //print_r($_POST);
-        
-        //echo(htmlentities("Soon™ to be implemented"));
 
     }
+    else
+    {
+//TODO Redirect to front page and display error there
+        echo "Wrong email or password!";
+    }
+}
 
 
 ?>
