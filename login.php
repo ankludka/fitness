@@ -1,5 +1,7 @@
 <?php   
 
+session_start();
+
 $link = mysqli_connect("localhost", "ariies_fitness", "fitness", "ariies_fitness");
 
 if (!$link) {
@@ -8,13 +10,13 @@ if (!$link) {
   echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
   exit;
 }
-
+//register user
 if( array_key_exists("register", $_POST))
 {
     $email = mysqli_real_escape_string($link, $_POST['email']);
     $password = mysqli_real_escape_string($link, $_POST['password']);
 
-//Check if email is already taken
+    //Check if email is already taken
     $query = "SELECT id FROM users WHERE email ='".$email."';";
     $result = mysqli_query($link, $query);
 
@@ -65,14 +67,20 @@ if( array_key_exists("login", $_POST))
         else
         {   
 //TODO Redirect to front page and display error there
-            echo 'Invalid password.';
+            
+            echo '<script type="text/javascript">
+            window.location = "index.php"
+       </script>';
         }
 
     }
     else
     {
 //TODO Redirect to front page and display error there
-        echo "Wrong email or password!";
+                    
+        echo '<script type="text/javascript">
+        window.location = "index.php"
+        </script>';
     }
 }
 

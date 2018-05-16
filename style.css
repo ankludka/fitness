@@ -19,7 +19,7 @@ form{
 
 .inputField, .submitButton, #error{
 
-    width: 500px;
+    width: 25%;
     margin: 1em auto;
     padding: 1em;
     font-size: 18px;
@@ -30,7 +30,7 @@ form{
     
     margin: 1em auto 0 auto;
     color: black;
-    width: 300px;
+    width: 15%;
 }
 
 .submitButton:hover{

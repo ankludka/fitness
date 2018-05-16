@@ -2,6 +2,12 @@
 
 const button = document.getElementById("submitButton");
 
+    if(document.getElementById("error").innerHTML = "")
+    {
+        document.getElementById("error").classList.remove("hidden");
+        alert(document.getElementById("error").innerHTML);
+    }
+
 //Validate email and password
 button.addEventListener("click", function(e){
 
