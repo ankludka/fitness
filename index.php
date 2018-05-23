@@ -19,15 +19,16 @@ session_start();
 
     <div id="container">
         <div id="error" class="hidden"></div>
-        <form method="POST" action="login.php" id="loginForm">
+        <form method="POST" id="loginForm">
             <input class="inputField" type="email" id="email" name="email" placeholder="e-mail" />
             <input class="inputField" type="password" id="password" name="password" placeholder="password" />
             <div id="checkbox">
-                <input type="checkbox" name="stayLogged" value="1" checked />
+                <input type="checkbox" name="stayLogged" id="stayLogged" value="0" checked />
                 <label for="stay">Stay logged in.</label>
             </div>
-            <input class="submitButton" type="submit" name="login" value="login" />
-            <input class="submitButton" type="submit" name="register" value="register" />
+            <input id="loginButton" type="button" name="login" value="login" />
+            <input id="registerButton" type="button" name="register" value="register" />
+
 
             
         </form>

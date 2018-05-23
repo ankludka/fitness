@@ -1,5 +1,9 @@
 <?php   
 
+//TODO session does nothing
+//TODO fix responses
+//TODO tweak it for ajax
+
 session_start();
 
 $link = mysqli_connect("localhost", "ariies_fitness", "fitness", "ariies_fitness");
@@ -68,9 +72,7 @@ if( array_key_exists("login", $_POST))
         {   
 //TODO Redirect to front page and display error there
             
-            echo '<script type="text/javascript">
-            window.location = "index.php"
-       </script>';
+
         }
 
     }
@@ -78,9 +80,7 @@ if( array_key_exists("login", $_POST))
     {
 //TODO Redirect to front page and display error there
                     
-        echo '<script type="text/javascript">
-        window.location = "index.php"
-        </script>';
+
     }
 }
 

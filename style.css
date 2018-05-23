@@ -17,7 +17,7 @@ form{
     margin-top: 20px;
 }
 
-.inputField, .submitButton, #error{
+.inputField, #loginButton, #registerButton, #error{
 
     width: 25%;
     margin: 1em auto;
@@ -26,14 +26,14 @@ form{
     border-radius: 7px;
 }
 
-.submitButton{
+#loginButton, #registerButton{
     
     margin: 1em auto 0 auto;
     color: black;
     width: 15%;
 }
 
-.submitButton:hover{
+#loginButton:hover, #registerButton:hover{
     cursor: pointer;
 }
 

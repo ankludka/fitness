@@ -1,6 +1,6 @@
 
-
-const button = document.getElementById("submitButton");
+/*
+const button = document.getElementById("submitButton1"); //WRONG
 
     if(document.getElementById("error").innerHTML = "")
     {
@@ -42,3 +42,36 @@ function isEmpty(field){
         return true;
     else return false;
 }
+
+*/
+
+//TODO FIX validation
+//TODO extend it to both login and register
+//TODO display responses somewhere (not an alert...)
+document.getElementById("loginButton").addEventListener("click", function(){
+
+   
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./login.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let stay = (document.getElementById('stayLogged').checked ? 1 : 0);
+
+    xhr.send("email="+email+"&password="+password+"&stayLogged="+stay+"&register=1");
+
+    xhr.addEventListener('load', function() {
+        if (this.status === 200) {
+//TODO change response to login/register
+            alert(xhr.responseText);
+        }
+        else
+        alert("something fucky");
+    })
+
+
+});
+
+
+
