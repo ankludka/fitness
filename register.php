@@ -1,7 +1,7 @@
 <?php   
-
 //TODO session does nothing
 //TODO fix responses
+
 
 session_start();
 
@@ -15,31 +15,30 @@ if (!$link) {
 }
 
 
-if( array_key_exists("login", $_POST))
+
+if( array_key_exists("register", $_POST))
 {
     $email = mysqli_real_escape_string($link, $_POST['email']);
     $password = mysqli_real_escape_string($link, $_POST['password']);
 
-    $query = "SELECT password FROM users WHERE email='".$email."'";
+    //Check if email is already taken
+    $query = "SELECT id FROM users WHERE email ='".$email."';";
     $result = mysqli_query($link, $query);
 
-
     if(mysqli_num_rows($result) > 0)
-    {
-        $row = mysqli_fetch_assoc($result);
-        $hash = $row['password'];
-
-        if (password_verify($password, $hash))
-        {
-            //TODO redirect to training page, load users data, cookie stuff
-            echo 'You have been logged in';
-        }
-        else
-            echo "Invalid e-mail or password.";
-    }
+        echo "This e-mail address is already registered.";
     else
-        echo "Invalid e-mail or password.";
-}
+    {
+        //TODO maybe some e-mail confirmation?
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+        $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".$email."', '".$hashedPassword."');";
+
+        if(!mysqli_query($link, $query))
+            echo "Registration failed - please try again later.";
+        else
+            echo "You have been registered!";
+    }
+}
 
 ?>
