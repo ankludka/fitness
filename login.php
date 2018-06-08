@@ -15,6 +15,7 @@ if (!$link) {
 }
 
 
+
 if( array_key_exists("login", $_POST))
 {
     $email = mysqli_real_escape_string($link, $_POST['email']);
@@ -32,7 +33,7 @@ if( array_key_exists("login", $_POST))
         if (password_verify($password, $hash))
         {
             //TODO redirect to training page, load users data, cookie stuff
-            echo 'You have been logged in';
+            echo "success";
         }
         else
             echo "Invalid e-mail or password.";
@@ -40,6 +41,5 @@ if( array_key_exists("login", $_POST))
     else
         echo "Invalid e-mail or password.";
 }
-
 
 ?>
