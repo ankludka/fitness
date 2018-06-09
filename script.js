@@ -1,26 +1,26 @@
 
-/*
-const button = document.getElementById("submitButton1"); //WRONG
 
-    if(document.getElementById("error").innerHTML = "")
+const button = document.getElementById("loginButton");
+
+    if(document.getElementById("alert").innerHTML = "")
     {
-        document.getElementById("error").classList.remove("hidden");
-        alert(document.getElementById("error").innerHTML);
+        document.getElementById("alert").classList.remove("hidden");
+        alert(document.getElementById("alert").innerHTML);
     }
-
+/*
 //Validate email and password
 button.addEventListener("click", function(e){
 
-    const error = document.getElementById("error");
-    error.classList.add("hidden");
-    error.innerHTML = "";
+    const alert = document.getElementById("alert");
+    alert.classList.add("hidden");
+    alert.innerHTML = "";
 
     if(isEmpty("email"))
     {
         e.preventDefault();
         
-        error.innerHTML += "Fill in your email address<br>";
-        error.classList.remove("hidden");
+        alert.innerHTML += "Fill in your email address<br>";
+        alert.classList.remove("hidden");
 
     }
 
@@ -29,8 +29,8 @@ button.addEventListener("click", function(e){
     {
         e.preventDefault();
 
-        error.innerHTML += "Fill in your password";
-        error.classList.remove("hidden");
+        alert.innerHTML += "Fill in your password";
+        alert.classList.remove("hidden");
     }
 
     
@@ -74,7 +74,7 @@ function login(){
                 alert(xhr.responseText);
         }
         else
-            alert("Error code " + this.status);
+            alert("alert code " + this.status);
     })
     
 }
@@ -96,6 +96,6 @@ function register(){
             alert(xhr.responseText);
         }
         else
-            alert("Error code " + this.status);
+            alert("alert code " + this.status);
     })
 }

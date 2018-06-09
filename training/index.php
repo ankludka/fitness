@@ -1,4 +1,4 @@
-<!--<?php include 'codes.php'; ?> -->
+<?php include 'codes.php'; ?>
 
 
 <!doctype html>

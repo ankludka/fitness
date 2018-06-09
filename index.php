@@ -1,5 +1,12 @@
 <?php
-session_start();
+  session_start();
+
+  if(array_key_exists("id", $_COOKIE)){
+    $_SESSION["id"] = $_COOKIE["id"];
+  }
+  if(array_key_exists("id", $_SESSION)){
+    header("Location: training/index.php");
+  }
 ?>
 
 <!doctype html>
@@ -18,7 +25,7 @@ session_start();
   <body>
 
     <div id="container">
-        <div id="error" class="hidden"></div>
+        <div id="alert" class="hidden"></div>
         <form method="POST" id="loginForm">
             <input class="inputField" type="email" id="email" name="email" placeholder="e-mail" />
             <input class="inputField" type="password" id="password" name="password" placeholder="password" />

@@ -33,6 +33,7 @@ if( array_key_exists("login", $_POST))
         if (password_verify($password, $hash))
         {
             //TODO redirect to training page, load users data, cookie stuff
+            setcookie("id", $email, time()+60*60*24*31);
             echo "success";
         }
         else
