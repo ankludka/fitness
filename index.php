@@ -1,12 +1,23 @@
 <?php
   session_start();
 
+  if(array_key_exists("logout", $_GET)){
+    unset($_COOKIE);
+    setcookie("id", "", time()-60*60);
+    unset($_SESSION["id"]);
+    session_destroy();
+    $_SESSION = array();
+    $_COOKIE = array();
+  }
+  
+  else if(array_key_exists("id", $_SESSION)){
+    header("Location: training/index.php");
+  }
+  
   if(array_key_exists("id", $_COOKIE)){
     $_SESSION["id"] = $_COOKIE["id"];
   }
-  if(array_key_exists("id", $_SESSION)){
-    header("Location: training/index.php");
-  }
+
 ?>
 
 <!doctype html>
@@ -27,8 +38,8 @@
     <div id="container">
         <div id="alert" class="hidden"></div>
         <form method="POST" id="loginForm">
-            <input class="inputField" type="email" id="email" name="email" placeholder="e-mail" />
-            <input class="inputField" type="password" id="password" name="password" placeholder="password" />
+            <input class="inputField" type="email" id="email" name="email" placeholder="E-mail" />
+            <input class="inputField" type="password" id="password" name="password" placeholder="Password" />
             <div id="checkbox">
                 <input type="checkbox" name="stayLogged" id="stayLogged" value="0" checked />
                 <label for="stay">Stay logged in.</label>

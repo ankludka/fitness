@@ -70,8 +70,11 @@ function login(){
             //TODO change response
             if(xhr.responseText == "success")
                window.location.href = "./training";
-            else
+            else{
                 alert(xhr.responseText);
+                clear(document.getElementById("password"));
+            }
+                
         }
         else
             alert("alert code " + this.status);
@@ -94,8 +97,14 @@ function register(){
         if (this.status === 200) {
             //TODO change response
             alert(xhr.responseText);
+            clear(document.getElementById("password"));
         }
         else
             alert("alert code " + this.status);
+            
     })
+}
+
+function clear(field){
+    field.value = "";
 }

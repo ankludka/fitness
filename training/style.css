@@ -45,3 +45,8 @@ body {
   margin-top: 5%;
   margin-bottom: 5%;
 }
+
+#logout{
+  position: absolute;
+  right: 0;
+}

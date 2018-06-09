@@ -1,3 +1,5 @@
+//TODO scrap Jquery
+
 //Select row
 $("tbody tr").click(function () {
     $('.selected').removeClass('selected');
@@ -112,3 +114,7 @@ for (let key in selected) {
 }
 });
 */
+
+document.getElementById("logout").addEventListener("click", function(){
+  window.location.href = "https://anklu.pl/fitness/index.php?logout=1"; 
+})

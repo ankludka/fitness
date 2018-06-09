@@ -1,6 +1,4 @@
 <?php   
-
-//TODO session does nothing
 //TODO fix responses
 
 session_start();
@@ -20,6 +18,7 @@ if( array_key_exists("login", $_POST))
 {
     $email = mysqli_real_escape_string($link, $_POST['email']);
     $password = mysqli_real_escape_string($link, $_POST['password']);
+    
 
     $query = "SELECT password FROM users WHERE email='".$email."'";
     $result = mysqli_query($link, $query);
@@ -33,7 +32,10 @@ if( array_key_exists("login", $_POST))
         if (password_verify($password, $hash))
         {
             //TODO redirect to training page, load users data, cookie stuff
-            setcookie("id", $email, time()+60*60*24*31);
+            if (array_key_exists("stayLogged", $_POST))
+                setcookie("id", $email, time()+60*60*24*31);
+            else
+                $_SESSION["id"] = $email;
             echo "success";
         }
         else

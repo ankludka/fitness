@@ -1,5 +1,4 @@
 <?php   
-//TODO session does nothing
 //TODO fix responses
 
 

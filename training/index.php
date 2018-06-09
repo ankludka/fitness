@@ -1,6 +1,8 @@
 <?php include 'codes.php'; ?>
 
-
+<!--TODO scrap bootstrap
+         work on design and look
+ -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,8 +19,10 @@
 
   </head>
   <body>
+  <a href="https://anklu.pl/fitness/index.php?logout=1">logout</a>
+    <button id="logout" type="button">X</button>
     <div id="content" class="container-fluid col-sm-3">
-
+      
       <div id="dayChoice">
         <button class="btn btn-primary" id="dayChange" type="submit">Day A1</button>
       </div>
