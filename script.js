@@ -2,11 +2,11 @@
 
 const button = document.getElementById("loginButton");
 
-    if(document.getElementById("alert").innerHTML = "")
-    {
-        document.getElementById("alert").classList.remove("hidden");
-        alert(document.getElementById("alert").innerHTML);
-    }
+if(document.getElementById("alert").innerHTML = "")
+{
+    document.getElementById("alert").classList.remove("hidden");
+    alert(document.getElementById("alert").innerHTML);
+}
 /*
 //Validate email and password
 button.addEventListener("click", function(e){

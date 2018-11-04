@@ -42,7 +42,7 @@
             <input class="inputField" type="password" id="password" name="password" placeholder="Password" />
             <div id="checkbox">
                 <input type="checkbox" name="stayLogged" id="stayLogged" value="0" checked />
-                <label for="stay">Stay logged in.</label>
+                <label for="stayLogged">Stay logged in.</label>
             </div>
             <input id="loginButton" type="button" name="login" value="login" />
             <input id="registerButton" type="button" name="register" value="register" />

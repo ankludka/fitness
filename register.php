@@ -4,7 +4,7 @@
 
 session_start();
 
-$link = mysqli_connect("localhost", "ariies_fitness", "fitness", "ariies_fitness");
+$link = mysqli_connect("localhost", "ariies1_fitness", "fitpass1234", "ariies1_fitness");
 
 if (!$link) {
   echo "Error: Unable to connect to MySQL." . PHP_EOL;
