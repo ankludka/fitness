@@ -31,13 +31,24 @@ body{
     grid-template-rows: 1em;
     grid-auto-flow: column;
     grid-auto-columns: 20%;
-    grid-column-gap: 0.5vw;
+    grid-column-gap: 0%;
     border: 1px solid black;
     line-height: 1em;
     height: 1em
 
 }
 
-div.grid-item.exSuccess{
+
+
+#finishDay{
+    display: block;
+    margin: 5% auto;
+}
+
+.success,.fail{
+    background-color: gray;
+}
+
+.highlight{
     background-color: red;
 }
