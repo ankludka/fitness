@@ -62,8 +62,9 @@ function CreateAndPopulateNewGridRow(exercise){
     newGridRow.appendChild(createNewGridItem('Name', exercise.name));
     newGridRow.appendChild(createNewGridItem('SetsAndReps', getSetsAndReps(exercise)));
     newGridRow.appendChild(createNewGridItem('Weight', exercise.weight));
-    newGridRow.appendChild(createNewGridItem('Success', 'X'));
-    newGridRow.appendChild(createNewGridItem('Fail', 'X'));
+    newGridRow.appendChild(createNewGridItem('Success', 'check'));
+    newGridRow.appendChild(createNewGridItem('Fail', 'cancel'));
+    //'check' and 'cancel' are material icons
 
     return newGridRow;
 }
@@ -74,6 +75,9 @@ function createNewGridItem(name, text){
     newGridItem.classList.add('ex' + name);
     let newTextContent = document.createTextNode(text);
     newGridItem.appendChild(newTextContent);
+
+    if(name == 'Success' || name == 'Fail')
+        newGridItem.classList.add('material-icons');
 
     return newGridItem;
 }
@@ -136,14 +140,14 @@ function updateExerciseStatus(event){
     if (event.target == successNode){
         parentNode.classList.remove('fail');
         parentNode.classList.toggle('success');
-        failNode.classList.remove('highlight');
-        successNode.classList.toggle('highlight');
+        failNode.classList.remove('highlight-fail');
+        successNode.classList.toggle('highlight-success');
     }
     else if (event.target == failNode){
         parentNode.classList.remove('success');
         parentNode.classList.toggle('fail');
-        successNode.classList.remove('highlight');
-        failNode.classList.toggle('highlight')
+        successNode.classList.remove('highlight-success');
+        failNode.classList.toggle('highlight-fail')
     }
 
 
@@ -182,12 +186,10 @@ function allExercisesFinished(){
 
  - Day info, day progression schema
 
- - Success button
- - Fail button
  - Last Set AMRAP image
- - Add 'Finish Day' button
+ - Style "finish day" button
  - Update day info and failCount on success/fail click
 
- - Make this shit pretty
+ - Make this shit pretty, really pretty
  */
 
