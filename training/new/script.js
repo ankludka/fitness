@@ -6,7 +6,7 @@ let userExerciseData = [
         failCount : 0,
         id: 1,
         lastSetAmrap: true,
-        weightProgression: 2.5,
+        weightIncrement: 2.5,
         completed: null
     },
     {
