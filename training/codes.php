@@ -13,6 +13,7 @@ session_start();
 
 if(array_key_exists("id", $_COOKIE)){
   $_SESSION["id"] = $_COOKIE["id"];
+  echo $_COOKIE["id"];
 }
 if(!array_key_exists("id", $_SESSION)){
   header("Location: https://anklu.pl/fitness/");
