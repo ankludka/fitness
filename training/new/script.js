@@ -1,49 +1,57 @@
-let userExerciseData = [
-    {
-        name : 'Squats',
-        weight : 50,
-        tier : 1,        
-        failCount : 0,
-        id: 1,
-        lastSetAmrap: true,
-        weightIncrement: 2.5,
-        completed: null
-    },
-    {
-        name : 'Squats2',
-        weight : 250,
-        tier : 2,
-        failCount : 1,
-        id: 2,
-        lastSetAmrap: true,
-        weightProgression: 5,
-        completed: null
-    },
-    {
-        name : 'Squats3',
-        weight : 350,
-        tier : 3,
-        failCount : 2,
-        id : 3,
-        lastSetAmrap: false,
-        weightProgression: 5,
-        completed: null
-    },
-    {
-        name : 'Squats4',
-        weight : 450,
-        tier : 41,
-        failCount : 3,
-        id : 4,
-        lastSetAmrap: false,
-        weightProgression: 1,
-        completed: null
-    }
-];
+let day = {
+    dayNumber: 1,
+    dayName: 'A1',
+    dayNameLong: 'Squat day',
+    exerciseList: [
+        {
+            name : 'Squats',
+            weight : 50,
+            tier : 1,        
+            failCount : 0,
+            id: 1,
+            lastSetAmrap: true,
+            weightIncrement: 2.5,
+            completed: null
+        },
+        {
+            name : 'Squats2',
+            weight : 250,
+            tier : 2,
+            failCount : 1,
+            id: 2,
+            lastSetAmrap: true,
+            weightProgression: 5,
+            completed: null
+        },
+        {
+            name : 'Squats3',
+            weight : 350,
+            tier : 3,
+            failCount : 2,
+            id : 3,
+            lastSetAmrap: false,
+            weightProgression: 5,
+            completed: null
+        },
+        {
+            name : 'Squats4',
+            weight : 450,
+            tier : 41,
+            failCount : 3,
+            id : 4,
+            lastSetAmrap: false,
+            weightProgression: 1,
+            completed: null
+        }
+    ]
+}
 
 
 
-populateExerciseGrid(userExerciseData);
+
+
+
+populateExerciseGrid(day.exerciseList);
 
 
 
