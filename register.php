@@ -1,6 +1,7 @@
 <?php   
 //TODO fix responses
 
+session_start();
 
 $servername = "localhost";
 $username = "ariies1_fitness";
