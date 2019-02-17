@@ -98,6 +98,7 @@ function register(){
             //TODO change response
             alert(xhr.responseText);
             clear(document.getElementById("password"));
+            createTrainingDays();
         }
         else
             alert("alert code " + this.status);
@@ -107,4 +108,8 @@ function register(){
 
 function clear(field){
     field.value = "";
+}
+
+function createTrainingDays(){
+
 }

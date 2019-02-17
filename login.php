@@ -33,9 +33,9 @@ if( array_key_exists("login", $_POST))
         {
             //TODO redirect to training page, load users data, cookie stuff
             if (array_key_exists("stayLogged", $_POST))
-                setcookie("id", $email, time()+60*60*24*31);
+                setcookie("email", $email, time()+60*60*24*31);
             else
-                $_SESSION["id"] = $email;
+                $_SESSION["email"] = $email;
             echo "success";
         }
         else

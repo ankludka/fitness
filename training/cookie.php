@@ -11,10 +11,10 @@ $link = mysqli_connect("localhost", "ariies1_fitness", "fitpass1234", "ariies1_f
 
 session_start();
 
-if(array_key_exists("id", $_COOKIE)){
-  $_SESSION["id"] = $_COOKIE["id"];
+if(array_key_exists("email", $_COOKIE)){
+  $_SESSION["email"] = $_COOKIE["email"];
 }
-if(!array_key_exists("id", $_SESSION)){
+if(!array_key_exists("email", $_SESSION)){
   header("Location: https://anklu.pl/fitness/");
 }
 

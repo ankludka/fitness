@@ -1,120 +1,212 @@
-//TODO scrap Jquery
+let day = {
+    dayNumber: 1,
+    dayName: 'A1',
+    dayNameLong: 'Squat day',
+    exerciseList: [
+        {
+            name : 'Squats',
+            weight : 50,
+            tier : 1,        
+            failCount : 0,
+            id: 1,
+            lastSetAmrap: true,
+            weightIncrement: 2.5,
+            completed: null
+        },
+        {
+            name : 'Squats2',
+            weight : 250,
+            tier : 2,
+            failCount : 1,
+            id: 2,
+            lastSetAmrap: true,
+            weightProgression: 5,
+            completed: null
+        },
+        {
+            name : 'Squats3',
+            weight : 350,
+            tier : 3,
+            failCount : 2,
+            id : 3,
+            lastSetAmrap: false,
+            weightProgression: 5,
+            completed: null
+        },
+        {
+            name : 'Squats4',
+            weight : 450,
+            tier : 41,
+            failCount : 3,
+            id : 4,
+            lastSetAmrap: false,
+            weightProgression: 1,
+            completed: null
+        }
+    ]
+}
 
-//Select row
-$("tbody tr").click(function () {
-    $('.selected').removeClass('selected');
-    $(this).addClass("selected");
-  });
 
-//Change day
-//TODO last day zaciagany z BD
-let day = 1;
 
-$('#dayChange').click(function() {
 
-  switch(day) {
-      case 1:{
-        $('#dayChange').html('Day B1');
-        $('#day-a1').hide();
-        $('#day-b1').show();
-        day++;
-      }
-      break;
-      case 2:{
-        $('#dayChange').html('Day A2');
-        $('#day-b1').hide();
-        $('#day-a2').show();
-        day++;
-      }
-      break;
-      case 3:{
-        $('#dayChange').html('Day B2');
-        $('#day-a2').hide();
-        $('#day-b2').show();
-        day++;
-      }
-      break;
-      case 4:{
-        $('#dayChange').html('Day A1');
-        $('#day-b2').hide();
-        $('#day-a1').show();
-        day = 1;
-      }
-      break;
-      default : alert("qqqq");
-  }
-  
-});
 
-/*
-function sendWeight(name, weight){
-// TODO  exerciseArray = {'exercisename'}name, ['weight'][weight]};
-// TODO  exerciseArray =  JSON.stringify(exerciseArray);
-  $.ajax({
-    data: 'asdf', //TODO
-    url: 'codes.php',
-    method: 'POST',
-    success: function(data) {
-      alert(data);
+
+populateExerciseGrid(day.exerciseList);
+
+
+
+function populateExerciseGrid(exerciseData){
+    let grid = document.getElementById('grid-container');
+    exerciseData.forEach(exercise => {
+        grid.appendChild(CreateAndPopulateNewGridRow(exercise));
+    });
+}
+
+function CreateAndPopulateNewGridRow(exercise){
+    let newGridRow = document.createElement('div');
+    newGridRow.classList.add('grid-row');
+    newGridRow.id = 'ex' + exercise.id;
+
+    newGridRow.appendChild(createNewGridItem('Name', exercise.name));
+    newGridRow.appendChild(createNewGridItem('SetsAndReps', getSetsAndReps(exercise)));
+    newGridRow.appendChild(createNewGridItem('Weight', exercise.weight));
+    newGridRow.appendChild(createNewGridItem('Success', 'check'));
+    newGridRow.appendChild(createNewGridItem('Fail', 'cancel'));
+    //'check' and 'cancel' are material icons
+
+    return newGridRow;
+}
+
+function createNewGridItem(name, text){
+    let newGridItem = document.createElement('div');
+    newGridItem.classList.add('grid-item');
+    newGridItem.classList.add('ex' + name);
+    let newTextContent = document.createTextNode(text);
+    newGridItem.appendChild(newTextContent);
+
+    if(name == 'Success' || name == 'Fail')
+        newGridItem.classList.add('material-icons');
+
+    return newGridItem;
+}
+
+function getSetsAndReps(exercise){
+
+    switch (exercise.tier){
+        case 1: {
+            switch(exercise.failCount){
+                case 0: return '5x3';
+                case 1: return '6x2';
+                case 2: return '10x1';
+                case 3: {
+                    updateFailCount(); //TODO move this somewhere else
+                    return '5x3';
+                }
+            }
+        }
+        case 2: {
+            switch(exercise.failCount){
+                case 0: return '3x10';
+                case 1: return '3x8';
+                case 2: return '3x6';
+                case 3: {
+                    updateFailCount(); //TODO move this somewhere else
+                    return '3x10';
+                }
+            }
+        }
+        case 3: return '3x15';
+        default: return 'getSetsAndReps error';
+        
     }
-});
 }
-*/
 
-function changeWeight(weight, currentWeight){
-  currentWeight = parseFloat(currentWeight);
-  let newWeight = currentWeight+weight;
-  $('.selected td:nth-of-type(3)').html(newWeight + "kg"); 
+function updateFailCount(exercise){
+    exercise.failCount < 3 ? exercise.failCount++ : exercise.failCount = 0;
 }
 
 
-function getWeight()
-{
-  let tier = $('tr.selected').data("tier");
-  if (tier == 1) return 5;
-  else return 2.5;
+
+document.addEventListener('click', function(event){
+    if (event.target.matches('.exSuccess') || event.target.matches('.exFail')){
+        updateExerciseStatus(event);
+        //TODO uploadExerciseStatus(event);
+    }
+        
+    if (event.target.matches('#finishDay'))
+        finishDay();
+});
+
+
+function updateExerciseStatus(event){
+    
+    let parentNode = event.target.parentNode;
+    let successNode = event.target.parentNode.childNodes[3];
+    let failNode = event.target.parentNode.childNodes[4];
+    
+
+    if (event.target == successNode){
+        parentNode.classList.remove('fail');
+        parentNode.classList.toggle('success');
+        failNode.classList.remove('highlight-fail');
+        successNode.classList.toggle('highlight-success');
+    }
+    else if (event.target == failNode){
+        parentNode.classList.remove('success');
+        parentNode.classList.toggle('fail');
+        successNode.classList.remove('highlight-success');
+        failNode.classList.toggle('highlight-fail')
+    }
+
+
 }
 
-$('#addWeight').click(function(){
+function finishDay(){
+    if(allExercisesFinished()){
+        // Display message 'congrats' with maybe some stats
+        // Upload finished day to database and mark as finished
+        // Switch to next day on message close
+        createNextDay();
 
-  let weight = getWeight();
-  let currentWeight = $('.selected td:nth-of-type(3)').html();
-  changeWeight(weight, currentWeight);
-});
-$('#removeWeight').click(function(){
+    }
+    else{
+        console.log('not yet');
+        console.log(document.cookie);
+    } 
 
-  let weight = 0 - getWeight();
-  let currentWeight = $('.selected td:nth-of-type(3)').html();
-  changeWeight(weight, currentWeight);
-});
-
-$('#success').click(function(){
-  let success = $('.selected td:nth-of-type(4)');
-  if(success.html() == "YES")
-    success.html("NO");
-  else
-    success.html("YES");
-});
-/*
-$('#endDay').click(function(){
-  let selected = $('td:nth-of-type(3)');
-  
-for (let key in selected) {
-  // skip loop if the property is from prototype
-  if (!selected.hasOwnProperty(key)) continue;
-
-  var obj = selected[key];
-  for (var prop in obj) {
-      // skip loop if the property is from prototype
-      if(!obj.hasOwnProperty(prop)) continue;
-
-      // your code
-      console.log(prop + " = " + obj[prop]);
-  }
 }
-});
-*/
 
-document.getElementById("logout").addEventListener("click", function(){
-  window.location.href = "https://anklu.pl/fitness/index.php?logout=1"; 
-})
+function allExercisesFinished(){
+    let children = document.getElementById('grid-container').children;
+
+    for (let i = 1; i< children.length; i++){
+        if(!children[i].classList.contains('success') &&
+           !children[i].classList.contains('fail'))
+        return false;
+    }
+    return true;
+}
+
+function createNextDay(){
+
+}
+
+
+
+ /* TODO
+ - create database
+ - load data from database (based on user) -> load the last unfinished day
+  - If last day in database is finished -> load last 'next' day 
+   (if today finished A1, load last B1)
+   Create new day based on the loaded one, upload it to DB and display to user
+  - If no days exist, create a new day
+
+ - Day info, day progression schema
+
+ - Last Set AMRAP image
+ - Style "finish day" button
+ - Update day info and failCount on success/fail click
+
+ - Make this shit pretty, really pretty
+ */
+
