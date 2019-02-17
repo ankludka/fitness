@@ -3,19 +3,19 @@
 
   if(array_key_exists("logout", $_GET)){
     unset($_COOKIE);
-    setcookie("id", "", time()-60*60);
-    unset($_SESSION["id"]);
+    setcookie("email", "", time()-60*60);
+    unset($_SESSION["email"]);
     session_destroy();
     $_SESSION = array();
     $_COOKIE = array();
   }
   
-  else if(array_key_exists("id", $_SESSION)){
+  else if(array_key_exists("email", $_SESSION)){
     header("Location: training/index.php");
   }
   
-  if(array_key_exists("id", $_COOKIE)){
-    $_SESSION["id"] = $_COOKIE["id"];
+  if(array_key_exists("email", $_COOKIE)){
+    $_SESSION["email"] = $_COOKIE["email"];
   }
 
 ?>
