@@ -138,6 +138,8 @@ document.addEventListener('click', function(event){
 });
 
 
+
+
 function updateExerciseStatus(event){
     
     let parentNode = event.target.parentNode;
@@ -187,18 +189,29 @@ function allExercisesFinished(){
     return true;
 }
 
+
+loadDay();
+function callback(response){
+    console.log(JSON.parse(response));
+}
+
 function loadDay(){
     let xhr = new XMLHttpRequest();
-    let response;
-    xhr.open("POST", "./loadExercise.php", true)
-    xhr.addEventListener('load', function(){
-        if (this.status === 200){
-            response = JSON.parse(this.responseText);
-        }
-        
-    })
+    xhr.open("POST", "https://anklu.pl/fitness/training/loadExercise.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send();
-    return response;
+    let response;
+    xhr.addEventListener('load', function() {
+        if (this.status === 200) {
+
+            callback(this.responseText);
+        }
+        else{
+            console.log(this.status);
+        }
+    })
+    
+
 }
 
 function createNextDay(){
