@@ -187,6 +187,20 @@ function allExercisesFinished(){
     return true;
 }
 
+function loadDay(){
+    let xhr = new XMLHttpRequest();
+    let response;
+    xhr.open("POST", "./loadExercise.php", true)
+    xhr.addEventListener('load', function(){
+        if (this.status === 200){
+            response = JSON.parse(this.responseText);
+        }
+        
+    })
+    xhr.send();
+    return response;
+}
+
 function createNextDay(){
 
 }
