@@ -1,63 +1,8 @@
-let day = {
-    dayNumber: 1,
-    dayName: 'A1',
-    dayNameLong: 'Squat day',
-    exerciseList: [
-        {
-            name : 'Squats',
-            weight : 50,
-            tier : 1,        
-            failCount : 0,
-            id: 1,
-            lastSetAmrap: true,
-            weightIncrement: 2.5,
-            completed: null
-        },
-        {
-            name : 'Squats2',
-            weight : 250,
-            tier : 2,
-            failCount : 1,
-            id: 2,
-            lastSetAmrap: true,
-            weightProgression: 5,
-            completed: null
-        },
-        {
-            name : 'Squats3',
-            weight : 350,
-            tier : 3,
-            failCount : 2,
-            id : 3,
-            lastSetAmrap: false,
-            weightProgression: 5,
-            completed: null
-        },
-        {
-            name : 'Squats4',
-            weight : 450,
-            tier : 41,
-            failCount : 3,
-            id : 4,
-            lastSetAmrap: false,
-            weightProgression: 1,
-            completed: null
-        }
-    ]
-}
+loadDay();
 
-
-
-
-
-
-populateExerciseGrid(day.exerciseList);
-
-
-
-function populateExerciseGrid(exerciseData){
+function populateExerciseGrid(exerciseList){
     let grid = document.getElementById('grid-container');
-    exerciseData.forEach(exercise => {
+    exerciseList.forEach(exercise => {
         grid.appendChild(CreateAndPopulateNewGridRow(exercise));
     });
 }
@@ -65,11 +10,11 @@ function populateExerciseGrid(exerciseData){
 function CreateAndPopulateNewGridRow(exercise){
     let newGridRow = document.createElement('div');
     newGridRow.classList.add('grid-row');
-    newGridRow.id = 'ex' + exercise.id;
+    newGridRow.id = 'ex' + exercise.exerciseId;
 
-    newGridRow.appendChild(createNewGridItem('Name', exercise.name));
+    newGridRow.appendChild(createNewGridItem('Name', exercise.exerciseName));
     newGridRow.appendChild(createNewGridItem('SetsAndReps', getSetsAndReps(exercise)));
-    newGridRow.appendChild(createNewGridItem('Weight', exercise.weight));
+    newGridRow.appendChild(createNewGridItem('Weight', exercise.exerciseWeight));
     newGridRow.appendChild(createNewGridItem('Success', 'check'));
     newGridRow.appendChild(createNewGridItem('Fail', 'cancel'));
     //'check' and 'cancel' are material icons
@@ -92,9 +37,9 @@ function createNewGridItem(name, text){
 
 function getSetsAndReps(exercise){
 
-    switch (exercise.tier){
+    switch (parseInt(exercise.exerciseTier,10)){
         case 1: {
-            switch(exercise.failCount){
+            switch(parseInt(exercise.exerciseFailCount,10)){
                 case 0: return '5x3';
                 case 1: return '6x2';
                 case 2: return '10x1';
@@ -103,9 +48,9 @@ function getSetsAndReps(exercise){
                     return '5x3';
                 }
             }
-        }
+        } break;
         case 2: {
-            switch(exercise.failCount){
+            switch(parseInt(exercise.exerciseFailCount,10)){
                 case 0: return '3x10';
                 case 1: return '3x8';
                 case 2: return '3x6';
@@ -114,7 +59,7 @@ function getSetsAndReps(exercise){
                     return '3x10';
                 }
             }
-        }
+        } break;
         case 3: return '3x15';
         default: return 'getSetsAndReps error';
         
@@ -122,7 +67,7 @@ function getSetsAndReps(exercise){
 }
 
 function updateFailCount(exercise){
-    exercise.failCount < 3 ? exercise.failCount++ : exercise.failCount = 0;
+    exercise.exerciseFailCount < 3 ? exercise.exerciseFailCount++ : exercise.exerciseFailCount = 0;
 }
 
 
@@ -190,10 +135,8 @@ function allExercisesFinished(){
 }
 
 
-loadDay();
-function callback(response){
-    console.log(JSON.parse(response));
-}
+
+
 
 function loadDay(){
     let xhr = new XMLHttpRequest();
@@ -204,7 +147,7 @@ function loadDay(){
     xhr.addEventListener('load', function() {
         if (this.status === 200) {
 
-            callback(this.responseText);
+            populateExerciseGrid(JSON.parse(this.responseText));
         }
         else{
             console.log(this.status);
