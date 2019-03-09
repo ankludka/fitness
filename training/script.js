@@ -1,4 +1,24 @@
 loadDay();
+let day = {};
+
+function loadDay(){
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://anklu.pl/fitness/training/loadExercise.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+    let response;
+    xhr.addEventListener('load', function() {
+        if (this.status === 200) {
+            day = JSON.parse(this.responseText);
+            console.log(day);
+            populateExerciseGrid(JSON.parse(this.responseText));
+        }
+        else{
+            console.log(this.status);
+        }
+    });
+}
+
 
 function populateExerciseGrid(exerciseList){
     let grid = document.getElementById('grid-container');
@@ -43,10 +63,6 @@ function getSetsAndReps(exercise){
                 case 0: return '5x3';
                 case 1: return '6x2';
                 case 2: return '10x1';
-                case 3: {
-                    updateFailCount(); //TODO move this somewhere else
-                    return '5x3';
-                }
             }
         } break;
         case 2: {
@@ -54,10 +70,6 @@ function getSetsAndReps(exercise){
                 case 0: return '3x10';
                 case 1: return '3x8';
                 case 2: return '3x6';
-                case 3: {
-                    updateFailCount(); //TODO move this somewhere else
-                    return '3x10';
-                }
             }
         } break;
         case 3: return '3x15';
@@ -66,8 +78,27 @@ function getSetsAndReps(exercise){
     }
 }
 
-function updateFailCount(exercise){
-    exercise.exerciseFailCount < 3 ? exercise.exerciseFailCount++ : exercise.exerciseFailCount = 0;
+function updateFailCount(){
+    for(i = 0; i < day.length; i++){
+        if (document.getElementById('ex'+day[i].exerciseId).classList.contains('fail')){
+            day[i].failCount = day[i].failCount + 1;
+            if (day[i].failCount > 2){
+                day[i].failCount = 0;
+               //TODO reduceWeightOnTooManyFailures();
+            }
+                
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://anklu.pl/fitness/training/updateFailCount.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send('dayId='+day[0].dayId+'&exerciseId='+day[i].exerciseId+'&exerciseFailCount='+day[i].failCount);
+            let response;
+            xhr.addEventListener('load', function() {
+                if (this.status != 200) {
+                    console.log(this.status);
+                }
+            })
+        }
+    }
 }
 
 
@@ -104,16 +135,46 @@ function updateExerciseStatus(event){
         successNode.classList.remove('highlight-success');
         failNode.classList.toggle('highlight-fail')
     }
+    console.log(event);
 
 
+    let dayId = day[0].dayId;
+    let exerciseId = parentNode.id.match(/\d+/)[0];
+
+    if (parentNode.classList.contains('success'))
+        let exerciseSuccess = 1;
+    if (parentNode.classList.contains('fail'))
+        let exerciseSuccess = 0;
+
+    if (parentNode.classList.contains('success') || parentNode.classList.contains('fail'))
+        let exerciseCompleted = 1;
+    else
+        let exerciseCompleted = 0;
+
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://anklu.pl/fitness/training/updateExerciseStatus.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send('dayId='+dayId+'&exerciseId='+exerciseId+'&exerciseSuccess='+exerciseSuccess+'&exerciseCompleted='+exerciseCompleted);
+    let response;
+    xhr.addEventListener('load', function() {
+        if (this.status != 200) {
+            console.log(this.status);
+            }
+    })
 }
 
 function finishDay(){
     if(allExercisesFinished()){
-        // Display message 'congrats' with maybe some stats
-        // Upload finished day to database and mark as finished
-        // Switch to next day on message close
+        //TODO
+        
+        updateFailCount();
+        addCurrentDayToHistory();
+        displaySuccessMessage();
         createNextDay();
+        //loadDay();
+
+        
 
     }
     else{
@@ -136,24 +197,11 @@ function allExercisesFinished(){
 
 
 
+function addCurrentDayToHistory(){
 
+}
 
-function loadDay(){
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://anklu.pl/fitness/training/loadExercise.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send();
-    let response;
-    xhr.addEventListener('load', function() {
-        if (this.status === 200) {
-
-            populateExerciseGrid(JSON.parse(this.responseText));
-        }
-        else{
-            console.log(this.status);
-        }
-    })
-    
+function displaySuccessMessage(){
 
 }
 
@@ -163,9 +211,9 @@ function createNextDay(){
 
 
 
+
  /* TODO
- - create database
- - load data from database (based on user) -> load the last unfinished day
+
   - If last day in database is finished -> load last 'next' day 
    (if today finished A1, load last B1)
    Create new day based on the loaded one, upload it to DB and display to user
