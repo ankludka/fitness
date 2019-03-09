@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function create_day_one($email){
 
     $servername = "localhost";
@@ -10,24 +10,27 @@ function create_day_one($email){
     $conn = new mysqli($servername, $username, $password, $dbname);
     
     $userId = $conn -> query("SELECT id FROM users WHERE email ='".$email."';")-> fetch_assoc()['id'];
-    $lastDay = $conn -> query("SELECT MAX(userId) FROM day");
+
+    $lastDay = ($conn -> query("SELECT MAX(dayId) FROM day")-> fetch_array(MYSQLI_NUM)[0]);
+    $lastDay = $lastDay + 1;
+
 
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`)
-    VALUES (".($lastDay+1).",".$userId.",1,1,1,1,40,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,1,1,40,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay+1).",".$userId.",1,1,2,1,20,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,2,1,20,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay+1).",".$userId.",1,1,3,1,15,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,3,1,15,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay+1).",".$userId.",1,1,4,1,0,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,4,1,0,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay+1).",".$userId.",1,1,5,1,6,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,5,1,6,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay+1).",".$userId.",1,1,6,1,10,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,6,1,10,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay+1).",".$userId.",1,1,7,1,0,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,7,1,0,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay+1).",".$userId.",1,1,8,1,10,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,8,1,10,0,0)");
     
 }
 
@@ -41,7 +44,8 @@ function create_day_two($email){
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     $userId = $conn -> query("SELECT id FROM users WHERE email ='".$email."';")-> fetch_assoc()['id'];
-    $lastDay = $conn -> query("SELECT MAX(userId) FROM day");
+    $lastDay = ($conn -> query("SELECT MAX(dayId) FROM day")-> fetch_array(MYSQLI_NUM)[0]);
+    $lastDay = $lastDay + 1;
 
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`)
     VALUES (".($lastDay+1).",".$userId.",1,2,9,1,20,0,0)");
@@ -71,7 +75,8 @@ function create_day_three($email){
     $conn = new mysqli($servername, $username, $password, $dbname);
     
     $userId = $conn -> query("SELECT id FROM users WHERE email ='".$email."';")-> fetch_assoc()['id'];
-    $lastDay = $conn -> query("SELECT MAX(userId) FROM day");
+    $lastDay = ($conn -> query("SELECT MAX(dayId) FROM day")-> fetch_array(MYSQLI_NUM)[0]);
+    $lastDay = $lastDay + 1;
     
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`)
     VALUES (".($lastDay+1).",".$userId.",1,3,14,1,30,0,0)");
@@ -101,7 +106,8 @@ function create_day_four($email){
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     $userId = $conn -> query("SELECT id FROM users WHERE email ='".$email."';")-> fetch_assoc()['id'];
-    $lastDay = $conn -> query("SELECT MAX(userId) FROM day");
+    $lastDay = ($conn -> query("SELECT MAX(dayId) FROM day")-> fetch_array(MYSQLI_NUM)[0]);
+    $lastDay = $lastDay + 1;
 
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`)
     VALUES (".($lastDay+1).",".$userId.",1,2,16,1,20,0,0)");
