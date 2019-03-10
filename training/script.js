@@ -32,12 +32,27 @@ function CreateAndPopulateNewGridRow(exercise){
     newGridRow.classList.add('grid-row');
     newGridRow.id = 'ex' + exercise.exerciseId;
 
+    
+
     newGridRow.appendChild(createNewGridItem('Name', exercise.exerciseName));
     newGridRow.appendChild(createNewGridItem('SetsAndReps', getSetsAndReps(exercise)));
     newGridRow.appendChild(createNewGridItem('Weight', exercise.exerciseWeight));
     newGridRow.appendChild(createNewGridItem('Success', 'check'));
     newGridRow.appendChild(createNewGridItem('Fail', 'cancel'));
     //'check' and 'cancel' are material icons
+
+    if (exercise.exerciseCompleted == '1'){
+        if (exercise.exerciseSuccess == '1'){
+            newGridRow.classList.add('success');
+            newGridRow.childNodes[3].classList.add('highlight-success');
+        }
+        else{
+            newGridRow.classList.add('fail');
+            newGridRow.childNodes[4].classList.add('highlight-fail');
+        }
+            
+
+    }
 
     return newGridRow;
 }
@@ -78,28 +93,7 @@ function getSetsAndReps(exercise){
     }
 }
 
-function updateFailCount(){
-    for(i = 0; i < day.length; i++){
-        if (document.getElementById('ex'+day[i].exerciseId).classList.contains('fail')){
-            day[i].failCount = day[i].failCount + 1;
-            if (day[i].failCount > 2){
-                day[i].failCount = 0;
-               //TODO reduceWeightOnTooManyFailures();
-            }
-                
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://anklu.pl/fitness/training/updateFailCount.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.send('dayId='+day[0].dayId+'&exerciseId='+day[i].exerciseId+'&exerciseFailCount='+day[i].failCount);
-            let response;
-            xhr.addEventListener('load', function() {
-                if (this.status != 200) {
-                    console.log(this.status);
-                }
-            })
-        }
-    }
-}
+
 
 
 
@@ -140,16 +134,18 @@ function updateExerciseStatus(event){
 
     let dayId = day[0].dayId;
     let exerciseId = parentNode.id.match(/\d+/)[0];
+    let exerciseSuccess;
+    let exerciseCompleted;
 
     if (parentNode.classList.contains('success'))
-        let exerciseSuccess = 1;
+        exerciseSuccess = 1;
     if (parentNode.classList.contains('fail'))
-        let exerciseSuccess = 0;
+        exerciseSuccess = 0;
 
     if (parentNode.classList.contains('success') || parentNode.classList.contains('fail'))
-        let exerciseCompleted = 1;
+        exerciseCompleted = 1;
     else
-        let exerciseCompleted = 0;
+        exerciseCompleted = 0;
 
 
     let xhr = new XMLHttpRequest();
@@ -195,7 +191,28 @@ function allExercisesFinished(){
     return true;
 }
 
-
+function updateFailCount(){
+    for(i = 0; i < day.length; i++){
+        if (document.getElementById('ex'+day[i].exerciseId).classList.contains('fail')){
+            day[i].failCount = day[i].failCount + 1;
+            if (day[i].failCount > 2){
+                day[i].failCount = 0;
+               //TODO reduceWeightOnTooManyFailures();
+            }
+                
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://anklu.pl/fitness/training/updateFailCount.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send('dayId='+day[0].dayId+'&exerciseId='+day[i].exerciseId+'&exerciseFailCount='+day[i].failCount);
+            let response;
+            xhr.addEventListener('load', function() {
+                if (this.status != 200) {
+                    console.log(this.status);
+                }
+            })
+        }
+    }
+}
 
 function addCurrentDayToHistory(){
 
