@@ -152,7 +152,6 @@ function updateExerciseStatus(event){
     xhr.open("POST", "https://anklu.pl/fitness/training/updateExerciseStatus.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send('dayId='+dayId+'&exerciseId='+exerciseId+'&exerciseSuccess='+exerciseSuccess+'&exerciseCompleted='+exerciseCompleted);
-    let response;
     xhr.addEventListener('load', function() {
         if (this.status != 200) {
             console.log(this.status);
@@ -162,10 +161,10 @@ function updateExerciseStatus(event){
 
 function finishDay(){
     if(allExercisesFinished()){
-        //TODO
         
         updateFailCount();
-        addCurrentDayToHistory();
+        //TODO
+        addDayToHistory(day[0].dayId, day[0].userId, new Date());
         displaySuccessMessage();
         createNextDay();
         //loadDay();
@@ -214,7 +213,17 @@ function updateFailCount(){
     }
 }
 
-function addCurrentDayToHistory(){
+function addDayToHistory(dayId, userId, date){
+    date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://anklu.pl/fitness/training/addDayToHistory.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send('dayId='+dayId+'&userId='+userId+'&date='+date);
+    xhr.addEventListener('load', function() {
+        if (this.status != 200) {
+            console.log(this.status);
+        }
+    });
 
 }
 
