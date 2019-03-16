@@ -129,8 +129,7 @@ function updateExerciseStatus(event){
         successNode.classList.remove('highlight-success');
         failNode.classList.toggle('highlight-fail')
     }
-    console.log(event);
-
+    
 
     let dayId = day[0].dayId;
     let exerciseId = parentNode.id.match(/\d+/)[0];
@@ -160,11 +159,11 @@ function updateExerciseStatus(event){
 }
 
 function finishDay(){
-    if(allExercisesFinished()){
+    if(allExercisesAreFinished()){
         
         updateFailCount();
-        //TODO
         addDayToHistory(day[0].dayId, day[0].userId, new Date());
+        //TODO
         displaySuccessMessage();
         createNextDay();
         //loadDay();
@@ -173,13 +172,12 @@ function finishDay(){
 
     }
     else{
-        console.log('not yet');
-        console.log(document.cookie);
+        
     } 
 
 }
 
-function allExercisesFinished(){
+function allExercisesAreFinished(){
     let children = document.getElementById('grid-container').children;
 
     for (let i = 1; i< children.length; i++){
@@ -215,6 +213,7 @@ function updateFailCount(){
 
 function addDayToHistory(dayId, userId, date){
     date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "https://anklu.pl/fitness/training/addDayToHistory.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
