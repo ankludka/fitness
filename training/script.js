@@ -1,4 +1,5 @@
 loadDay();
+
 let day = {};
 
 function loadDay(){
@@ -163,13 +164,9 @@ function finishDay(){
         
         updateFailCount();
         addDayToHistory(day[0].dayId, day[0].userId, new Date());
-        //TODO
-        displaySuccessMessage();
         createNextDay();
-        //loadDay();
-
-        
-
+        clearGrid();
+        loadDay();
     }
     else{
         
@@ -226,12 +223,29 @@ function addDayToHistory(dayId, userId, date){
 
 }
 
-function displaySuccessMessage(){
-
-}
 
 function createNextDay(){
 
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://anklu.pl/fitness/training/createNextDay.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send();
+    xhr.addEventListener('load', function() {
+        if (this.status != 200) {
+            console.log(this.status);
+        }
+        else {
+            console.log(this.responseText);
+        }
+    })
+}
+
+function clearGrid(){
+    let grid = document.getElementById('grid-container');
+    
+    while (grid.childNodes[2]){
+        grid.removeChild(grid.childNodes[2]);
+    }
 }
 
 
