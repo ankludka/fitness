@@ -36,8 +36,11 @@ if( array_key_exists("register", $_POST))
         if(!$conn-> query("INSERT INTO `users` (`email`, `password`) VALUES ('".$email."', '".$hashedPassword."');"))
             echo "Registration failed - please try again later.";
         else {
-            echo "You have been registered!";
             create_day_one($email);
+            create_day_two($email);
+            create_day_three($email);
+            create_day_four($email);
+            echo "You have been registered!";
         }
             
         
