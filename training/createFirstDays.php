@@ -18,7 +18,7 @@ function create_day_one($email){
 
 
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`)
-    VALUES (".$lastDay.",".$userId.",1,1,1,1,40,0,0)");
+    VALUES (".$lastDay.",".$userId.",1,1,1,1,50,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
     VALUES (".$lastDay.",".$userId.",1,1,2,1,20,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
@@ -50,7 +50,7 @@ function create_day_two($email){
     $lastDay = $lastDay + 1;
 
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`)
-    VALUES (".($lastDay).",".$userId.",1,2,9,1,20,0,0)");
+    VALUES (".($lastDay).",".$userId.",1,2,9,1,30,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
     VALUES (".($lastDay).",".$userId.",1,2,10,1,40,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
@@ -83,7 +83,7 @@ function create_day_three($email){
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`)
     VALUES (".($lastDay).",".$userId.",1,3,14,1,30,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay).",".$userId.",1,3,15,1,30,0,0)");
+    VALUES (".($lastDay).",".$userId.",1,3,15,1,40,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
     VALUES (".($lastDay).",".$userId.",1,3,3,1,15,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
@@ -112,9 +112,9 @@ function create_day_four($email){
     $lastDay = $lastDay + 1;
 
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`)
-    VALUES (".($lastDay).",".$userId.",1,2,16,1,20,0,0)");
+    VALUES (".($lastDay).",".$userId.",1,2,16,1,50,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
-    VALUES (".($lastDay).",".$userId.",1,2,17,1,40,0,0)");
+    VALUES (".($lastDay).",".$userId.",1,2,17,1,20,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
     VALUES (".($lastDay).",".$userId.",1,2,11,1,8,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
