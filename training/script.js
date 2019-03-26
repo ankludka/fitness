@@ -26,6 +26,11 @@ function populateExerciseGrid(exerciseList){
     exerciseList.forEach(exercise => {
         grid.appendChild(CreateAndPopulateNewGridRow(exercise));
     });
+
+    let weightList = document.getElementsByClassName("exWeight");
+    for (let weight of weightList){
+        weight.contentEditable = true;
+    }
 }
 
 function CreateAndPopulateNewGridRow(exercise){
@@ -76,9 +81,9 @@ function getSetsAndReps(exercise){
     switch (parseInt(exercise.exerciseTier,10)){
         case 1: {
             switch(parseInt(exercise.exerciseFailCount,10)){
-                case 0: return '5x3';
-                case 1: return '6x2';
-                case 2: return '10x1';
+                case 0: return '5x3 + AMRAP';
+                case 1: return '6x2 + AMRAP';
+                case 2: return '10x1 + AMRAP';
             }
         } break;
         case 2: {
@@ -88,7 +93,7 @@ function getSetsAndReps(exercise){
                 case 2: return '3x6';
             }
         } break;
-        case 3: return '3x15';
+        case 3: return '3x15 + AMRAP';
         default: return 'getSetsAndReps error';
         
     }
@@ -101,12 +106,25 @@ function getSetsAndReps(exercise){
 document.addEventListener('click', function(event){
     if (event.target.matches('.exSuccess') || event.target.matches('.exFail')){
         updateExerciseStatus(event);
-        //TODO uploadExerciseStatus(event);
     }
         
-    if (event.target.matches('#finishDay'))
+    if (event.target.matches('#finishDay')){
         finishDay();
+    }
+        
+
 });
+
+document.addEventListener('focusout', function(event){
+    if (event.target.matches('.exWeight')){
+        let exID = event.target.parentNode.id.replace('ex','');
+        let weight = event.target.innerText;
+        updateExerciseWeight(day[0].dayId, exID, weight);
+    }
+    
+});
+
+
 
 
 
@@ -248,22 +266,34 @@ function clearGrid(){
     }
 }
 
+function updateExerciseWeight(dayId, exerciseId, weight){
+    let xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://anklu.pl/fitness/training/updateExerciseWeight.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send('dayId='+dayId+'&exerciseId='+exerciseId+'&exerciseWeight='+weight);
+        let response;
+        xhr.addEventListener('load', function() {
+            if (this.status != 200) {
+                console.log(this.status);
+            }
+        })
+}
+
 
 
 
  /* TODO
 
-  - If last day in database is finished -> load last 'next' day 
-   (if today finished A1, load last B1)
-   Create new day based on the loaded one, upload it to DB and display to user
-  - If no days exist, create a new day
-
- - Day info, day progression schema
-
  - Last Set AMRAP image
+ - Allow manual weight change
+ - Mobile first
+ - Update Tier 3 weight based on last day (A1 -> B1, not A1 -> A1)
+ - Some kind of Tier 3 progression system
+ - Day info, day progression schema
+ - Stats page
+ 
  - Style "finish day" button
- - Update day info and failCount on success/fail click
 
- - Make this shit pretty, really pretty
+ - Make this pretty
  */
 
