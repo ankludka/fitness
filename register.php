@@ -2,7 +2,7 @@
 //TODO fix responses
 
 session_start();
-include './training/createFirstDays.php';
+include './training/createFirstDay.php';
 
 $servername = "localhost";
 $username = "ariies1_fitness";
@@ -36,10 +36,7 @@ if( array_key_exists("register", $_POST))
         if(!$conn-> query("INSERT INTO `users` (`email`, `password`) VALUES ('".$email."', '".$hashedPassword."');"))
             echo "Registration failed - please try again later.";
         else {
-            create_day_one($email);
-            create_day_two($email);
-            create_day_three($email);
-            create_day_four($email);
+            createDay($email);
             echo "You have been registered!";
         }
             
