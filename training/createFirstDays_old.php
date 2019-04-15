@@ -33,6 +33,23 @@ function create_day_one($email){
     VALUES (".$lastDay.",".$userId.",1,1,7,1,0,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
     VALUES (".$lastDay.",".$userId.",1,1,8,1,10,0,0)");
+
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 1, 50, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 2, 20, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 3, 15, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 4, 0, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 5, 6, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 6, 10, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 7, 0, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 8, 10, 0)");
     
 }
 
@@ -65,6 +82,17 @@ function create_day_two($email){
     VALUES (".($lastDay).",".$userId.",1,2,13,1,10,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
     VALUES (".($lastDay).",".$userId.",1,2,8,1,10,0,0)");
+
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 9, 30, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 10, 40, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 11, 8, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 12, 20, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 13, 10, 0)");
 }
 
 function create_day_three($email){
@@ -96,6 +124,11 @@ function create_day_three($email){
     VALUES (".($lastDay).",".$userId.",1,3,7,1,10,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
     VALUES (".($lastDay).",".$userId.",1,3,8,1,10,0,0)");
+
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 14, 30, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 15, 40, 0)");
 }
 
 function create_day_four($email){
@@ -127,6 +160,11 @@ function create_day_four($email){
     VALUES (".($lastDay).",".$userId.",1,2,13,1,10,0,0)");
     $conn -> query("INSERT INTO `day`(`dayId`, `userId`, `programId`, `dayNumber`, `exerciseId`, `exerciseSuccess`, `exerciseWeight`, `exerciseFailCount`, `exerciseCompleted`) 
     VALUES (".($lastDay).",".$userId.",1,2,8,1,10,0,0)");
+
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 16, 50, 0)");
+    $conn -> query("INSERT INTO exerciseCurrentStatus (userId, exerciseId, exerciseWeight, exerciseFailCount)
+    VALUES (".$userId.", 17, 20, 0)");
 }
 
 ?>
