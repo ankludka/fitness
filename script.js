@@ -84,13 +84,12 @@ function login(){
 
 
 function register(){
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "./register.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./register.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("email="+email+"&password="+password+"&register=1");
 
     xhr.addEventListener('load', function() {
@@ -98,7 +97,7 @@ function register(){
             //TODO change response
             alert(xhr.responseText);
             clear(document.getElementById("password"));
-            createTrainingDays();
+            createDay(email, 1, 0);
         }
         else
             alert("alert code " + this.status);
@@ -110,6 +109,19 @@ function clear(field){
     field.value = "";
 }
 
-function createTrainingDays(){
+function createDay(email){
 
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://anklu.pl/fitness/training/createDay.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.send("email="+email+"&programId=1&dayNumber=1");
+    xhr.addEventListener('load', function() {
+        if (this.status != 200) {
+            console.log(this.status);
+        }
+        else {
+            console.log(this.responseText);
+        }
+    })
 }

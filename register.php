@@ -2,7 +2,6 @@
 //TODO fix responses
 
 session_start();
-include './training/createFirstDay.php';
 
 $servername = "localhost";
 $username = "ariies1_fitness";
@@ -15,11 +14,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-
-
-
-if( array_key_exists("register", $_POST))
-{
     $email = $conn -> real_escape_string($_POST['email']);
     $password = $conn -> real_escape_string($_POST['password']);
 
@@ -36,15 +30,9 @@ if( array_key_exists("register", $_POST))
         if(!$conn-> query("INSERT INTO `users` (`email`, `password`) VALUES ('".$email."', '".$hashedPassword."');"))
             echo "Registration failed - please try again later.";
         else {
-            createDay($email);
             echo "You have been registered!";
         }
             
         
     }
-}
-
-
-
-
 ?>

@@ -10,6 +10,7 @@ function loadDay(){
     let response;
     xhr.addEventListener('load', function() {
         if (this.status === 200) {
+            console.log(this.responseText);
             day = JSON.parse(this.responseText);
             console.log(day);
             populateExerciseGrid(JSON.parse(this.responseText));
@@ -120,6 +121,8 @@ document.addEventListener('focusout', function(event){
         let exID = event.target.parentNode.id.replace('ex','');
         let weight = event.target.innerText;
         updateExerciseWeight(day[0].dayId, exID, weight);
+        updateExercisesCurrentStatus
+        
     }
     
 });
@@ -127,7 +130,18 @@ document.addEventListener('focusout', function(event){
 
 
 
-
+function updateExerciseWeight(dayId, exerciseId, weight){
+    let xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://anklu.pl/fitness/training/updateExerciseWeight.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send('dayId='+dayId+'&exerciseId='+exerciseId+'&exerciseWeight='+weight);
+        let response;
+        xhr.addEventListener('load', function() {
+            if (this.status != 200) {
+                console.log(this.status);
+            }
+        })
+}
 
 function updateExerciseStatus(event){
     
@@ -177,32 +191,6 @@ function updateExerciseStatus(event){
     })
 }
 
-function finishDay(){
-    if(allExercisesAreFinished()){
-        
-        updateFailCount();
-        addDayToHistory(day[0].dayId, day[0].userId, new Date());
-        createNextDay();
-        clearGrid();
-        loadDay();
-    }
-    else{
-        
-    } 
-
-}
-
-function allExercisesAreFinished(){
-    let children = document.getElementById('grid-container').children;
-
-    for (let i = 1; i< children.length; i++){
-        if(!children[i].classList.contains('success') &&
-           !children[i].classList.contains('fail'))
-        return false;
-    }
-    return true;
-}
-
 function updateFailCount(){
     for(i = 0; i < day.length; i++){
         if (document.getElementById('ex'+day[i].exerciseId).classList.contains('fail')){
@@ -226,6 +214,32 @@ function updateFailCount(){
     }
 }
 
+function finishDay(){
+    if(allExercisesAreFinished()){
+        
+        updateFailCount();
+        addDayToHistory(day[0].dayId, day[0].userId, new Date());
+        createDay(day[0].email, day[0].programId, day[0].dayNumber);
+        clearGrid();
+        loadDay();
+    }
+    else{
+        
+    } 
+
+}
+
+function allExercisesAreFinished(){
+    let children = document.getElementById('grid-container').children;
+
+    for (let i = 1; i< children.length; i++){
+        if(!children[i].classList.contains('success') &&
+           !children[i].classList.contains('fail'))
+        return false;
+    }
+    return true;
+}
+
 function addDayToHistory(dayId, userId, date){
     date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
 
@@ -242,12 +256,16 @@ function addDayToHistory(dayId, userId, date){
 }
 
 
-function createNextDay(){
+function createDay(email, programId, dayNumber){
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://anklu.pl/fitness/training/createNextDay.php", true);
+    xhr.open("POST", "https://anklu.pl/fitness/training/createDay.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send();
+    if(parseInt(dayNumber, 10) == 4)
+        dayNumber = 1;
+    else dayNumber = parseInt(dayNumber, 10) +1;
+    console.log("email="+email+"&programId="+programId+"&dayNumber="+dayNumber);
+    xhr.send("email="+email+"&programId="+programId+"&dayNumber="+dayNumber);
     xhr.addEventListener('load', function() {
         if (this.status != 200) {
             console.log(this.status);
@@ -266,21 +284,10 @@ function clearGrid(){
     }
 }
 
-function updateExerciseWeight(dayId, exerciseId, weight){
-    let xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://anklu.pl/fitness/training/updateExerciseWeight.php", true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send('dayId='+dayId+'&exerciseId='+exerciseId+'&exerciseWeight='+weight);
-        let response;
-        xhr.addEventListener('load', function() {
-            if (this.status != 200) {
-                console.log(this.status);
-            }
-        })
-}
 
 
 
+// TODO LoadExercise.php sql query is wrong
 
  /* TODO
 
